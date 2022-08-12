@@ -4,8 +4,9 @@
 version: 2.1
 parameters:
   message-text:
-    type: string
-    default: ""
+    type: enum
+    default: "Hello"
+    enum: ["Sup", "Hola"]
   git-branch:
     type: string
     default: "this-wont-exists-ever"
