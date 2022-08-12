@@ -5,6 +5,9 @@ parameters:
   message-text:
     type: string
     default: ""
+  git-branch:
+    type: string
+    default: "this-branch-does-not-exists"
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -26,4 +29,8 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - say-hello:
+          filters:
+            branches:
+              only:
+                - << pipeline.parameters.git-branch >>
