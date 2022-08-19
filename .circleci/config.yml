@@ -27,8 +27,9 @@ jobs:
           condition:
             equal: [true, << pipeline.parameters.print-hello>>]
           steps:
-          - run: |
-              echo file.txt
+          - run:
+              name: "Print Hellow"
+              command: echo file.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
