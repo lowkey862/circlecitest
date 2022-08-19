@@ -3,17 +3,14 @@
 # Comment this
 version: 2.1
 parameters:
-  message-text:
-    type: enum
-    default: "Hello"
-    enum: ["Sup", "Hola"]
-  git-branch:
-    type: string
-    default: "this-wont-exists-ever"
+  print-hello:
+    type: boolean
+    default: false
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
   say-hello:
+    working_directory: ~/project
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -23,17 +20,19 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "Say hello"
-          command: echo << pipeline.parameters.message-text >>
+          name: "Write hello"
+          command: echo "Hello" > file.txt
       - run: echo ${MY_ENV_VAR}
+      - when:
+          condition:
+            equal: [true, << pipeline.parameters.print-hello>>]
+          steps:
+          - run: |
+              echo file.txt
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello:
-          filters:
-            branches:
-              only:
-                - << pipeline.parameters.git-branch >>
+      - say-hello
