@@ -23,9 +23,8 @@ jobs:
     steps:
       - run: |
           export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
-          mkdir $configFolder
-          cd $configFolder 
-          pwd
+          echo "Hello there" > $configFolder
+          cat $configFolder
       - checkout
       - run:
           name: "Write hello"
