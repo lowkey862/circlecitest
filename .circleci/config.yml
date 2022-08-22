@@ -26,7 +26,7 @@ jobs:
           export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
           echo "Hello there" > $configFolder
           cat $configFolder
-          cat /etc/os-release
+          apt update && apt install -y --no-install-recommends apksign 
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
