@@ -22,9 +22,9 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - run: |
-          foo=<<pipeline.parameters.config>>
-          mkdir "$(echo "$foo" | sed 's/.*/\u&/')"
-          cd "$(echo "$foo" | sed 's/.*/\u&/')"
+          export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
+          mkdir $configFolder
+          cd $configFolder 
           pwd
       - checkout
       - run:
