@@ -30,10 +30,11 @@ jobs:
           # sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
           # lscpu
           # sudo find / -name "build-tools"
-          ls /home/circleci/android-sdk/build-tools/33.0.0/
-          sudo find / -name "apksigner"
+          # ls /home/circleci/android-sdk/build-tools/33.0.0/
+          # sudo find / -name "apksigner"
           # printenv
           # apksigner --help
+          $ANDROID_SDK_ROOT/build-tools/33.0.0/apksigner --help
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
