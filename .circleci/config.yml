@@ -29,7 +29,8 @@ jobs:
           java --version
           # sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
           # lscpu
-          sudo find / -name "build-tools"
+          # sudo find / -name "build-tools"
+          ls /home/circleci/android-sdk/build-tools
           # apksigner --help
       - run:
           name: "Write hello"
