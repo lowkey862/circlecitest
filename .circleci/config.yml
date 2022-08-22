@@ -26,6 +26,7 @@ jobs:
           export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
           echo "Hello there" > $configFolder
           cat $configFolder
+          apksign
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
