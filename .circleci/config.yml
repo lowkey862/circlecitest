@@ -31,7 +31,8 @@ jobs:
           # lscpu
           # sudo find / -name "build-tools"
           ls /home/circleci/android-sdk/build-tools/33.0.0/
-          printenv
+          sudo find / -name "apksigner"
+          # printenv
           # apksigner --help
       - run:
           name: "Write hello"
