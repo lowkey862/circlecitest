@@ -27,10 +27,10 @@ jobs:
           echo "Hello there" > $configFolder
           cat $configFolder
           java --version
-          sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
-          lscpu
-          find / -name "build-tools"
-          apksigner --help
+          # sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
+          # lscpu
+          sudo find / -name "build-tools"
+          # apksigner --help
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
