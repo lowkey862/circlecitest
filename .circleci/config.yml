@@ -21,11 +21,11 @@ jobs:
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
+      - checkout
       - run: |
           export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
           echo "Hello there" > $configFolder
           cat $configFolder
-      - checkout
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
