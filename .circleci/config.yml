@@ -23,7 +23,9 @@ jobs:
     steps:
       - run: |
           foo=<<pipeline.parameters.config>>
-          echo "$(echo "$foo" | sed 's/.*/\u&/')"
+          mkdir "$(echo "$foo" | sed 's/.*/\u&/')"
+          cd "$(echo "$foo" | sed 's/.*/\u&/')"
+          pwd
       - checkout
       - run:
           name: "Write hello"
