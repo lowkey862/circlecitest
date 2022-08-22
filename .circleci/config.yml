@@ -29,6 +29,7 @@ jobs:
           java --version
           sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
           lscpu
+          file /usr/bin/apksigner
           apksigner --help
       - run:
           name: "Write hello"
