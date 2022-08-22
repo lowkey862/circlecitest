@@ -27,7 +27,7 @@ jobs:
           echo "Hello there" > $configFolder
           cat $configFolder
           java --version
-          sudo apt update && sudo apt install -y apksigner
+          sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
           lscpu
           apksigner --help
       - run:
