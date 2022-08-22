@@ -27,7 +27,7 @@ jobs:
           echo "Hello there" > $configFolder
           cat $configFolder
           java --version
-          sudo apt update && sudo apt install -y --no-install-recommends apksigner
+          sudo apt update && sudo apt install -y apksigner
           apksigner --help
       - run:
           name: "Write hello"
