@@ -60,5 +60,7 @@ workflows:
       - say-hello:
           post-steps:
             - run: |
-                STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${CIRCLE_TOKEN}" | jq -r '.items[].status')
+                echo ${CIRCLE_TOKEN}
+                #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${CIRCLE_TOKEN}" | jq -r '.items[].status')
+                STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${CIRCLE_TOKEN}")
                 echo "Build (<< pipeline.number >>) finished for $CIRCLE_BRANCH. Build status: [$STATUS]. Build details are available at $CIRCLE_BUILD_URL"
