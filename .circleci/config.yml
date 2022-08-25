@@ -63,6 +63,6 @@ workflows:
                 sup="hi"
                 echo $sup
                 #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}" | jq -r '.items[].status')
-                curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=$CIRCLE_TOKEN" | jq -r '.item[].status'
+                curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=$CIRCLE_TOKEN" | jq -r '.items[].status'
                 #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}")
                 #echo "Build (<< pipeline.number >>) finished for $CIRCLE_BRANCH. Build status: [$(cat status)]. Build details are available at $CIRCLE_BUILD_URL"
