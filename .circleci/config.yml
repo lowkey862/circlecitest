@@ -39,6 +39,7 @@ jobs:
           # printenv
           # apksigner --help
           #$ANDROID_SDK_ROOT/build-tools/33.0.0/apksigner --help
+          echo << pipeline.id >>
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
