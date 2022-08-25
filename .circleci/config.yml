@@ -65,5 +65,5 @@ workflows:
                 #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}" | jq -r '.items[].status')
                 STATUS1=curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}
                 echo $STATUS1
-                STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}")
+                #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}")
                 #echo "Build (<< pipeline.number >>) finished for $CIRCLE_BRANCH. Build status: [$STATUS]. Build details are available at $CIRCLE_BUILD_URL"
