@@ -62,6 +62,7 @@ workflows:
             - run: |
                 sup="hi"
                 echo $sup
+                echo $CIRCLE_WORKFLOW_JOB_ID
                 #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}" | jq -r '.items[].status')
                 curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=$CIRCLE_TOKEN"
                 #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}")
