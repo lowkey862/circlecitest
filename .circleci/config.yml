@@ -21,7 +21,7 @@ jobs:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
-      - image: cimg/android:2022.08
+      - image: cimg/base
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -30,7 +30,7 @@ jobs:
           export configFolder="$(echo "<<pipeline.parameters.config>>" | sed 's/.*/\u&/')"
           echo "Hello there" > $configFolder
           cat $configFolder
-          java --version
+          #java --version
           # sudo apt update && sudo apt install -y binfmt-support qemu qemu-user-static apksigner
           # lscpu
           # sudo find / -name "build-tools"
@@ -38,7 +38,7 @@ jobs:
           # sudo find / -name "apksigner"
           # printenv
           # apksigner --help
-          $ANDROID_SDK_ROOT/build-tools/33.0.0/apksigner --help
+          #$ANDROID_SDK_ROOT/build-tools/33.0.0/apksigner --help
       - run:
           name: "Write hello"
           command: echo "Hello" > file.txt
@@ -56,4 +56,8 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - say-hello:
+          post-steps:
+            - run: |
+                STATUS=$(curl "https://circleci.com/api/v2/pipeline/$PIPELINE/workflow?circle-token=$CIRCLE_TOKEN" | jq -r '.items[].status')
+                echo "Build (<< pipeline.number >>) $STATUS for $CIRCLE_BRANCH. Build details are available at $CIRCLE_BUILD_URL"
