@@ -55,7 +55,7 @@ jobs:
           - run:
               name: "Print Hellow"
               command: cat file.txt
-      - run: export HI=$(echo "Sup") >> $BASH_ENV
+      - run: echo 'export HI=$(echo "Sup")' >> $BASH_ENV
       - run: echo $HI
 
 # Invoke jobs via workflows
