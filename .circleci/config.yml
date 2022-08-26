@@ -55,19 +55,12 @@ jobs:
           - run:
               name: "Print Hellow"
               command: cat file.txt
+      - run: export HI=$(echo "Sup")
+      - run: echo $HI
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello:
-          post-steps:
-            - run: |
-                sup="hi"
-                echo $sup
-                echo $CIRCLE_WORKFLOW_JOB_ID
-                #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}" | jq -r '.items[].status')
-                curl "https://circleci.com/api/v2/workflow/$CIRCLE_WORKFLOW_JOB_ID?circle-token=$CIRCLE_TOKEN"
-                #STATUS=$(curl "https://circleci.com/api/v2/pipeline/<<pipeline.id>>/workflow?circle-token=${sup}")
-                #echo "Build (<< pipeline.number >>) finished for $CIRCLE_BRANCH. Build status: [$(cat status)]. Build details are available at $CIRCLE_BUILD_URL"
+      - say-hello
