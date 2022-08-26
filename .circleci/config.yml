@@ -42,7 +42,7 @@ jobs:
           echo << pipeline.id >>
       - run:
           name: "Write hello"
-          command: echoo "Hello" > file.txt
+          command: echo "Hello" > file.txt
       - run:
           name: Run if previous failed
           command: echo "oops it failed"
