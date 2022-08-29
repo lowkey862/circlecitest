@@ -13,6 +13,9 @@ parameters:
     type: enum    
     default: "apk"
     enum: ["apk", "bundle"]
+  branch:
+    type: string
+    default: "this-branch-does-not-exist"
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
@@ -63,4 +66,8 @@ jobs:
 workflows:
   say-hello-workflow:
     jobs:
-      - say-hello
+      - say-hello:
+           filters:
+            branches:
+              only:
+                << pipeline.parameters.branch >>
