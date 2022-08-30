@@ -51,6 +51,11 @@ jobs:
           name: Run if previous failed
           command: echo "oops it failed"
           when: on_fail
+      - run:
+          name: Clone another repo
+          command: |
+            git clone git@github.com:lowkey862/private-repo.git
+            ls
       - run: echo ${MY_ENV_VAR}
       - when:
           condition:
