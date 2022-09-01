@@ -66,7 +66,14 @@ jobs:
               command: cat file.txt
       - run: echo 'export HI=$(echo "Sup")' >> $BASH_ENV
       - run: echo $HI
-
+      - run:
+          name: "Write params to file"
+          command: |
+            cat \<<EOF | tee -a .env
+            PRINT_HELLO=<< pipeline.parameters.print-hello >>
+            CONFIG=<< pipeline.parameters.config >>
+            EOF
+            cat .env
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
